@@ -1,62 +1,55 @@
 # HW5
 
-Dylan Losey, Virginia Tech.
+## Description
 
-In this homework assignment we will develop an assistive robot arm.
+This homework is modified from the HW5 source code: https://github.com/vt-hri/HW5.git
+
+In this homework assignment we will develop an assistive robot arm. By using the tested environment, you have my permission to use my API key but you may need to abide the confidential policies of its usage.
+
+Currently we only have 3 cubes, a microwave and a cabinet, feel free to prompt the robot to do whatever you like, feel free to make it confused, I don't have too much task in mind yet.
 
 ## Install and Run
 
+In the root folder of this code:
+
+**Linux / Mac:**
 ```bash
-
-# Download
-git clone https://github.com/vt-hri/HW5.git
-cd HW5
-
-# Create and source virtual environment
-# If you are using Mac or Conda, modify these two lines as shown in [HW0](https://github.com/vt-hri/HW0)
 python3 -m venv venv
 source venv/bin/activate
-
-# Install dependencies
-# If you are using Mac or Conda, modify this line as shown in [HW0](https://github.com/vt-hri/HW0)
-pip install numpy pybullet
-
-# Run the script
+pip install numpy pybullet openai httpx
 python main.py
 ```
 
-## Expected Output
-
-<img src="env.png" width="750">
-
-## (OPTIONAL) GPT-OSS in Python
-
-Virginia Tech hosts a language model and every student has access to it. 
-However, API access is restricted to the VT Campus VPN.
-To set up your free access, follow the instructions [here](https://docs.arc.vt.edu/ai/011_llm_api_arc_vt_edu.html) and get your API key.
-Remember to keep your key private.
-
-## (OPTIONAL) Connecting to GPT-OSS
-
-Paste your API key into line 5 of `lm-test.py`.
-Then install the OpenAI library and run your code:
-```bash
-# Install dependency
-pip install openai
-
-# Run the lm-test script
-python3 lm-test.py
+**Windows (Command Prompt):**
+```cmd
+python -m venv venv
+venv\Scripts\activate
+pip install numpy pybullet openai httpx
+python main.py
 ```
-Try editing the system prompt and user prompt in `lm-test.py`.
-Once you have this working, you can bring it into `main.py` to help create your assistive robot.
 
-## Assignment
+**Windows (PowerShell):**
+```powershell
+python -m venv venv
+venv\Scripts\Activate.ps1
+pip install numpy pybullet openai httpx
+python main.py
+```
 
-Your goal is to create a system where everyday users can make the robot perform assistive tasks of their choice. 
-For example, perhaps one user wants the robot to "put the cube in the microwave." 
-The user task are open ended, and a good assistive robot should be able to help for a wide variety of tasks.
-Modify the code as needed to complete the following steps:
-1. Brainstorm ways for everyday users to make the robot do what they want. List the desired characteristics for your assistive robot.
-2. Implement your assistive strategy.
-3. Define performance metrics for your system. Have a friend test your system, and compare their performance with and without your assistance strategy.
-4. Use statistical analysis to determine whether your strategy makes a significant improvement (e.g., a t-test or ANOVA).
+> **Note:** If you get an error about "Execution of scripts is disabled" in PowerShell, run `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned` first.
+
+### Usage
+
+1. After the simulation start, you can choose to accept assistance from the LLM or not. Then, you may enter your goal and try to achieve it with or without the assistance from the robot.
+2. After you typed your task, you can single click the gui to input your teleop.
+ "W/A/S/D" is for horizonatal move, "Q/E" is up/down. "Z/X" is for opening/closing the gripper. 
+3. If you choose assistance and the robot is annoying, you may input "." so robot is just inputing minimal input and you have top authority of what to do next.
+4. After finish you can exit using "Ctrl + C", and tell the robot if your goal is achieved by typing (Y/N). Feel free to leave comments, your evaluation is also logged.
+
+
+
+Example tasks:
+
+(May help you)How to work with sim:
+1. scroll mouse to zoom in/out.
+2. ctrl + left mouse button to rotate
